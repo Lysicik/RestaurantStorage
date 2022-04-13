@@ -1,0 +1,24 @@
+{% extends 'inc/base.html' %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Наименование организации</th>
+        <th scope="col">Номер телефона</th>
+        <th scope="col">Адрес поставщика</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for contractor in contractors %}
+    <tr>
+        <td>{{ contractor.organization_name }}</td>
+        <td>{{ contractor.phone }}</td>
+        <td>{{ contractor.address }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
