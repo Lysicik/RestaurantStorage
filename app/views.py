@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from app.filters import ContractorFilter
+from app.filters import ContractorFilter, ProductFilter
 from app.forms import ContractorCreate, OrderCreate, EmployeeCreate, PackingListCreate, ProductCreate, \
     StockProductCreate, GiveawayCreate, SignIn
 from app.models import Contractor, Product, Employee, Order, PackingList, StockProduct, Giveaway
@@ -10,13 +10,14 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def index(request):
     contractors = ContractorFilter(request.GET, queryset=Contractor.objects.get_table_data())
+
     return render(request, 'index.html', {
         "contractors": contractors,
     })
 
 @login_required
 def index2(request):
-    products = Product.objects.get_table_data()
+    products = ProductFilter(request.GET, queryset=Product.objects.get_table_data())
 
     return render(request, 'index2.html', {
         "products": products,
