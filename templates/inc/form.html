@@ -1,0 +1,35 @@
+
+<form method="POST">
+{% csrf_token %}
+<table class="table">
+<thead>
+<tr>
+    {% for field in form %}
+            <th scope="col">
+                {{field.label_tag}}
+            </th>
+    {% endfor %}
+</tr>
+</thead>
+<tbody>
+<tr>
+       {% for field in form %}
+            <td>
+                {{field}}
+            </td>
+    {% endfor %}
+</tr>
+<tr>
+       {% for field in form %}
+            <td>
+               <a id="error"> {{field.errors}} </a>
+            </td>
+    {% endfor %}
+</tr>
+</tbody>
+
+</table>
+<fieldset id="actions">
+    <input type="submit" id="save" value="СОХРАНИТЬ">
+</fieldset>
+</form>

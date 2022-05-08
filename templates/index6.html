@@ -1,0 +1,39 @@
+{% extends 'inc/base.html' %}
+
+{% block content %}
+<h1 class="display-6" align="center">Товары на складе</h1>
+<br><br><br>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Номер товара на складе</th>
+        <th scope="col">Товара <input type="text" value=""></th>
+        <th scope="col">Количество</th>
+        <th scope="col">Дата окончания срока годности</th>
+        <th scope="col">Код заказа</th>
+        <th scope="col">Поставщик</th>
+        <th scope="col">Сотрудник</th>
+        <th scope="col">Номер товарной накладной</th>
+        <th scope="col"><a href="{% url 'add6'%}"><img src = "http://cdn.onlinewebfonts.com/svg/img_428369.png" width="25" height=25"></a></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for stock_product in stock_products %}
+    <tr>
+        <td>{{ stock_product.number_stoсk_product }}</td>
+        <td>{{ stock_product.product_stock.product_name }}</td>
+        <td>{{ stock_product.quantity_product }}</td>
+        <td>{{ stock_product.date_expire_product }}</td>
+        <td>{{ stock_product.product_order.number_order }}</td>
+        <td>{{ stock_product.product_contractor.organization_name }}</td>
+        <td>{{ stock_product.product_employee.lastname }} {{ stock_product.product_employee.firstname }} {{ stock_product.product_employee.patronymic }}</td>
+        <td>{{ stock_product.number_packing_list.number_list }}</td>
+        <td><a href="{% url 'change6' id=stock_product.id %}"><img src="http://clipart-library.com/new_gallery/204-2049954_banner-download-edit-draw-svg-png-icon-free.png" width="25" height=25"></a>
+            <a href="{% url 'delete_add_change6' id=stock_product.id %}"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9_%D0%BA%D1%80%D0%B5%D1%81%D1%82.webp" width="25" height=25"></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

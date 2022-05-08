@@ -1,0 +1,11 @@
+{% extends 'inc/base.html' %}
+
+{% block content %}
+<h1 class="display-6" align="center">Добавить/изменить запись в таблице &laquo;Накладные выдачи/списания&raquo;</h1>
+<br><br><br>
+
+{% include 'inc/form.html' %}
+<fieldset id="actions">
+    <a href="/giveaways/"><input type="submit" id="cancel" value="ОТМЕНИТЬ"></a>
+</fieldset>
+{% endblock content %}

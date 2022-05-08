@@ -1,0 +1,40 @@
+{% extends 'inc/base.html' %}
+
+{% block content %}
+<h1 class="display-6" align="center">Накладные выдачи/списания</h1>
+<br><br><br>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Номер накладной выдачи/списания <input type="text" value=""></th>
+        <th scope="col">Товар</th>
+        <th scope="col">Количество</th>
+        <th scope="col">Дата выдачи/списания</th>
+        <th scope="col">Причина</th>
+        <th scope="col">Код заказа</th>
+        <th scope="col">Поставщик</th>
+        <th scope="col">Сотрудник</th>
+        <th scope="col">Номер товарной накладной</th>
+        <th scope="col"><a href="{% url 'add7'%}"><img src = "http://cdn.onlinewebfonts.com/svg/img_428369.png" width="25" height=25"></a></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for giveaway in giveaways %}
+    <tr>
+        <td>{{ giveaway.number_giveaway_list }}</td>
+        <td>{{ giveaway.product_away.product_name }}</td>
+        <td>{{ giveaway.quantity_product_away }} </td>
+        <td>{{ giveaway.date_away }}</td>
+        <td>{{ giveaway.reason }} </td>
+        <td>{{ giveaway.product_order_away.number_order }} </td>
+        <td>{{ giveaway.product_contractor_away.organization_name }}</td>
+        <td>{{ giveaway.product_employee.lastname }} {{ giveaway.product_employee.firstname }} {{ giveaway.product_employee.patronymic }}</td>
+        <td>{{ giveaway.number_packing_list_away.number_list }} </td>
+        <td><a href="{% url 'change7' id=giveaway.id %}"><img src="http://clipart-library.com/new_gallery/204-2049954_banner-download-edit-draw-svg-png-icon-free.png" width="25" height=25"></a>
+            <a href="{% url 'delete_add_change7' id=giveaway.id %}"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9_%D0%BA%D1%80%D0%B5%D1%81%D1%82.webp" width="25" height=25"></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
